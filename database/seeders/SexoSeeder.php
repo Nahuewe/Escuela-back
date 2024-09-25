@@ -13,10 +13,10 @@ class SexoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('sexo')->insert([ // El nombre de la tabla es 'nacionalidad'
-            ['nombre' => 'HOMBRE'],
-            ['nombre' => 'MUJER'],
-            ['nombre' => 'NO INFORMA'],
+        DB::table('sexo')->insert([
+            ['nombre' => 'Hombre'],
+            ['nombre' => 'Mujer'],
+            ['nombre' => 'No Informa'],
         ]);
     }
 }

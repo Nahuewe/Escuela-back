@@ -22,6 +22,31 @@ class PersonaController extends Controller
         $this->personaService = $personaService;
     }
 
+    public function ListaPersona()
+    { {
+            $persona = $this->personaService->personaLista();
+            return PersonaShowResource::collection($persona);
+        }
+    }
+
+    public function buscarPersona(Request $request)
+    {
+        try {
+            $query = $request->input('query');
+            $personas = $this->personaService->buscarPersona($query);
+
+            return PersonaResource::collection($personas);
+        } catch (\Exception $e) {
+            throw new CustomizeException('Persona no encontrada', Response::HTTP_NOT_FOUND);
+        }
+    }
+
+    public function personaAll()
+    {
+        $persona = $this->personaService->personaAll();
+        return PersonaResource::collection($persona);
+    }
+
     public function index()
     {
         $persona = $this->personaService->personaTabla();
@@ -62,7 +87,6 @@ class PersonaController extends Controller
         }
     }
 
-
     public function show($id)
     {
         $persona = $this->personaService->verPersona($id);
@@ -82,13 +106,6 @@ class PersonaController extends Controller
         }
     }
 
-    public function ListaPersona()
-    { {
-            $persona = $this->personaService->personaLista();
-            return PersonaShowResource::collection($persona);
-        }
-    }
-
     public function cambiarEstado(Request $request)
     {
         try {
@@ -104,22 +121,4 @@ class PersonaController extends Controller
         }
     }
 
-    public function buscarPersona(Request $request)
-    {
-        try {
-            $query = $request->input('query');
-            $personas = $this->personaService->buscarPersona($query);
-
-            return PersonaResource::collection($personas);
-        } catch (\Exception $e) {
-            throw new CustomizeException('Persona no encontrada', Response::HTTP_NOT_FOUND);
-        }
-    }
-
-
-    public function personaAll()
-    {
-        $persona = $this->personaService->personaAll();
-        return PersonaResource::collection($persona);
-    }
 }

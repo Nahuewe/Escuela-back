@@ -20,15 +20,9 @@ class PersonaService
         return $persona;
     }
 
-    public function getLegajos()
-    {
-        return Persona::pluck('legajo');
-    }
-
     public function verPersona($id)
     {
         $persona = Persona::with([
-            // 'documentaciones'
         ])->findOrFail($id);
         return $persona;
     }
@@ -39,12 +33,8 @@ class PersonaService
 
         try {
 
-            $data['persona']['estados_id'] = 3;
+            $data['persona']['estados_id'] = 1;
             $persona = Persona::create($data['persona']);
-
-            // if (isset($data['documentacion'])) {
-            //     $this->asignarDocumentos($persona->id, $data['documentacion']);
-            // }
 
             DB::commit();
 
@@ -56,17 +46,6 @@ class PersonaService
         }
     }
 
-    // public function asignarDocumentos($id, $data)
-    // {
-    //     foreach ($data as $documentacion) {
-
-    //         $docu=Documentacion::where('id',$documentacion['id'])->first();
-    //         $docu['persona_id']=$id;
-    //         $docu->update();
-
-    //     }
-    // }
-
     public function personaActualizar($personaId, $data)
     {
         DB::beginTransaction();
@@ -76,12 +55,6 @@ class PersonaService
 
             // Actualizar datos de la persona
             $persona->update($data['persona']);
-
-            // Manejo de documentación
-            // if (isset($data['documentacion'])) {
-            //     $this->asignarDocumentos($persona->id, $data['documentacion']);
-            // } 
-            // DB::commit();
 
             return $persona;
         } catch (\Exception $e) {

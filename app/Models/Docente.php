@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Agencia extends Model
+class Docente extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table='agencia';
+    protected $table='docente';
 
     protected $guarded = [];
 }

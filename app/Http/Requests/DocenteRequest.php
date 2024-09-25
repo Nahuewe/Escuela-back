@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AgenciaRequest extends FormRequest
+class DocenteRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,7 +15,7 @@ class AgenciaRequest extends FormRequest
     {
         return [
             'nombre' => 'required|string|max:255',
-            'domicilio_trabajo' => 'nullable|string|max:255',
+            'formacion' => 'nullable|string|max:255',
             'telefono_laboral' => 'nullable|string|max:255',
         ];
     }

@@ -22,9 +22,9 @@ class PersonaEditRequest extends FormRequest
         $id = $this->route('persona'); // Directamente obtener el ID de la ruta
 
         return [
-            'persona.fecha_afiliacion' => 'nullable|date',
             'persona.nombre' => 'required|string',
             'persona.apellido' => 'required|string',
+            'persona.fecha_afiliacion' => 'nullable|date',
             'persona.sexo_id' => 'nullable|exists:sexo,id',
             'persona.fecha_nacimiento' => 'nullable|date',
             'persona.dni' => [
@@ -32,20 +32,9 @@ class PersonaEditRequest extends FormRequest
                 'string',
                 Rule::unique('persona')->ignore($id)
             ],
-            'persona.cuil' => [
-                'nullable',
-                'string',
-                Rule::unique('persona')->ignore($id)
-            ],
-            'persona.email' => 'nullable|string',
             'persona.telefono' => 'nullable|string',
-            'persona.nacionalidad_id' => 'nullable|exists:nacionalidad,id',
             'persona.estados_id' => 'exists:estados,id',
             'users_id'=>'required|integer',
-
-              //DOCUMENTACION
-            // 'documentacion' => 'array',
-            // 'documentacion.*.id'=>'nullable|integer'
         ];
     }
 
@@ -56,7 +45,6 @@ class PersonaEditRequest extends FormRequest
     {
         return [
             'persona.dni.unique' => 'El DNI ya está registrado.',
-            'persona.cuil.unique' => 'El CUIL ya está registrado.',
         ];
     }
 }

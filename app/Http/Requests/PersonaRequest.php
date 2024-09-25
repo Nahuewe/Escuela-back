@@ -26,23 +26,13 @@ class PersonaRequest extends FormRequest
     {
         return [
             //PERSONA
-            'persona.legajo' => 'required|string|unique:persona',
-            'persona.fecha_afiliacion' => 'nullable|date',
             'persona.nombre' => 'required|string',
             'persona.apellido' => 'required|string',
+            'persona.fecha_afiliacion' => 'nullable|date',
             'persona.sexo_id' => 'nullable|exists:sexo,id',
-            'persona.fecha_nacimiento' => 'nullable|date',
             'persona.dni' => 'required|string|unique:persona',
-            'persona.cuil' => 'nullable|string|unique:persona',
-            'persona.email' => 'nullable|string',
             'persona.telefono' => 'nullable|string',
-            'persona.nacionalidad_id' => 'nullable|exists:nacionalidad,id',
             'persona.users_id'=>'required|integer',
-
-            //DOCUMENTACION
-            // 'documentacion' => 'array',
-            // 'documentacion.*.id'=>'nullable|integer'
-
         ];
     }
 
@@ -55,8 +45,6 @@ class PersonaRequest extends FormRequest
     {
         return [
             // PERSONA
-            'persona.legajo.required' => 'El legajo es obligatorio.',
-            'persona.legajo.unique' => 'El legajo ya está registrado.',
             'persona.fecha_afiliacion.date' => 'La fecha de afiliación debe ser una fecha válida.',
             'persona.nombre.required' => 'El nombre es obligatorio.',
             'persona.apellido.required' => 'El apellido es obligatorio.',
@@ -65,12 +53,7 @@ class PersonaRequest extends FormRequest
             'persona.dni.required' => 'El DNI es obligatorio.',
             'persona.dni.integer' => 'El DNI debe ser un número entero.',
             'persona.dni.unique' => 'El DNI ya está registrado.',
-            'persona.cuil.integer' => 'El CUIL debe ser un número entero.',
-            'persona.cuil.unique' => 'El CUIL ya está registrado.',
-            'persona.email.email' => 'El correo electrónico debe ser una dirección válida.',
-            'persona.email.unique' => 'El correo electrónico ya está registrado.',
             'persona.telefono.string' => 'El teléfono debe ser un número entero.',
-            'persona.nacionalidad_id.exists' => 'La nacionalidad seleccionada no es válida.',
             'persona.estados_id.required' => 'El estado es obligatorio.',
             'persona.estados_id.exists' => 'El estado seleccionado no es válido.',
         ];
