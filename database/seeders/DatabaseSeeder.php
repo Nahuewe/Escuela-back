@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             SexoSeeder::class,
             EstadosSeeder::class,
             RolesSeeder::class,
+            UsuarioSeeder::class,
+            DocenteSeeder::class,
         ]);
     }
 }

@@ -15,6 +15,24 @@ class Persona extends Model
 
     protected $table='persona';
 
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'dni',
+        'fecha_nacimiento',
+        'fecha_cursado',
+        'edad',
+        'sexo_id',
+        'telefono',
+        'domicilio',
+        'ocupacion',
+        'enfermedad',
+        'becas',
+        'formacion_id',
+        'observacion',
+        'estados_id',
+    ];
+
     protected $guarded = [];
 
     public function estados(): BelongsTo
@@ -27,15 +45,8 @@ class Persona extends Model
         return $this->belongsTo(Sexo::class, 'sexo_id');
     }
 
-    // public function documentaciones(): HasMany
-    // {
-    //     return $this->HasMany(Documentacion::class, 'persona_id');
-    // }
-
-    public function users(): BelongsTo
+    public function formacion()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(Docente::class, 'formacion_id');
     }
-
-
 }

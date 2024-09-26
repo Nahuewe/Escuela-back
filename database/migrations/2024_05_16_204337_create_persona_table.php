@@ -13,19 +13,23 @@ return new class extends Migration
     {
         Schema::create('persona', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_afiliacion')->nullable();;
             $table->string('nombre');
             $table->string('apellido');
-            $table->date('fecha_nacimiento')->nullable();
             $table->string('dni')->unique();
-            $table->string('cuil', 20)->nullable();
-            $table->string('email')->nullable();
-            $table->string('telefono')->nullable();
-            $table->unsignedBigInteger('estados_id')->default(1);
+            $table->date('fecha_nacimiento')->nullable();
+            $table->date('fecha_cursado')->nullable();
+            $table->string('edad')->nullable();
             $table->unsignedBigInteger('sexo_id')->nullable();
-            $table->unsignedBigInteger('users_id')->nullable();
-            $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('sexo_id')->references('id')->on('sexo');
+            $table->string('telefono')->nullable();
+            $table->string('domicilio')->nullable();
+            $table->string('ocupacion')->nullable();
+            $table->string('enfermedad')->nullable();
+            $table->string('becas')->nullable();
+            $table->unsignedBigInteger('formacion_id');
+            $table->foreign('formacion_id')->references('id')->on('docente');
+            $table->string('observacion')->nullable();
+            $table->unsignedBigInteger('estados_id')->default(1);
             $table->foreign('estados_id')->references('id')->on('estados');
             $table->softDeletes();
             $table->timestamps();

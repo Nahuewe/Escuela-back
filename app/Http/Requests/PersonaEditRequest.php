@@ -24,17 +24,22 @@ class PersonaEditRequest extends FormRequest
         return [
             'persona.nombre' => 'required|string',
             'persona.apellido' => 'required|string',
-            'persona.fecha_afiliacion' => 'nullable|date',
-            'persona.sexo_id' => 'nullable|exists:sexo,id',
-            'persona.fecha_nacimiento' => 'nullable|date',
             'persona.dni' => [
                 'required',
                 'string',
                 Rule::unique('persona')->ignore($id)
             ],
+            'persona.fecha_nacimiento' => 'nullable|date',
+            'persona.fecha_cursado' => 'nullable|date',
+            'persona.edad' => 'nullable|string',
+            'persona.sexo_id' => 'nullable|exists:sexo,id',
             'persona.telefono' => 'nullable|string',
-            'persona.estados_id' => 'exists:estados,id',
-            'users_id'=>'required|integer',
+            'persona.domicilio' => 'nullable|string',
+            'persona.ocupacion' => 'nullable|string',
+            'persona.enfermedad' => 'nullable|string',
+            'persona.becas' => 'nullable|string',
+            'persona.formacion_id' => 'nullable|integer|exists:docente,id',
+            'persona.observacion' => 'nullable|string'
         ];
     }
 

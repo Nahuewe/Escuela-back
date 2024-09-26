@@ -10,13 +10,13 @@ class PersonaService
 {
     public function personaTabla()
     {
-        $persona = Persona::orderBy('nombre', 'asc')->paginate(10);
+        $persona = Persona::orderBy('apellido', 'asc')->paginate(10);
         return $persona;
     }
 
     public function personaAll()
     {
-        $persona=Persona::orderBy('nombre', 'asc')->get();
+        $persona=Persona::orderBy('apellido', 'asc')->get();
         return $persona;
     }
 
@@ -48,17 +48,13 @@ class PersonaService
 
     public function personaActualizar($personaId, $data)
     {
-        DB::beginTransaction();
-
         try {
             $persona = Persona::findOrFail($personaId);
-
-            // Actualizar datos de la persona
+    
             $persona->update($data['persona']);
-
+    
             return $persona;
         } catch (\Exception $e) {
-            DB::rollback();
             Log::error('Error al actualizar persona: ' . $e->getMessage());
             throw $e;
         }
@@ -81,7 +77,7 @@ class PersonaService
 
     public function personaLista()
     {
-        $persona = Persona::all();
+        $persona = Persona::with('formacion')->get();
         return $persona;
     }
 

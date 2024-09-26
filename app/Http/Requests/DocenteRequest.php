@@ -14,9 +14,15 @@ class DocenteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string|max:255',
-            'formacion' => 'nullable|string|max:255',
-            'telefono_laboral' => 'nullable|string|max:255',
+            'nombre' => 'required|string',
+            'dni' => 'required|string|unique:persona',
+            'fecha_nacimiento' => 'nullable|date',
+            'domicilio' => 'nullable|string',
+            'fecha_docencia' => 'nullable|date',
+            'fecha_cargo' => 'nullable|date',
+            'situacion' => 'nullable|string',
+            'formacion' => 'nullable|string',
+            'telefono' => 'nullable|string',
         ];
     }
 }

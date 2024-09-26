@@ -17,8 +17,14 @@ class DocenteShowResource extends JsonResource
         return [
             'id' => $this->resource->id,
             'nombre' => $this->resource->nombre,
+            'dni' => $this->resource->dni,
+            'fecha_nacimiento' => $this->fecha_nacimiento ?? null,
+            'domicilio' => $this->resource->domicilio,
+            'fecha_docencia' => $this->fecha_docencia ?? null,
+            'fecha_cargo' => $this->fecha_cargo ?? null,
+            'situacion' => $this->situacion,
             'formacion' => $this->resource->formacion,
-            'telefono_laboral' => $this->resource->telefono_laboral,
+            'telefono' => $this->resource->telefono,
         ];
     }
 }

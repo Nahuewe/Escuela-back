@@ -57,15 +57,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Estado::class, 'estados_id');
     }
-
-    public function persona(): HasMany
-    {
-        return $this->HasMany(Persona::class, 'users_id');
-    }
-
-    // public function documentacion(): HasMany
-    // {
-    //     return $this->HasMany(Documentacion::class, 'users_id');
-    // }
-
 }

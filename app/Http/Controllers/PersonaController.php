@@ -33,9 +33,9 @@ class PersonaController extends Controller
     {
         try {
             $query = $request->input('query');
-            $personas = $this->personaService->buscarPersona($query);
+            $persona = $this->personaService->buscarPersona($query);
 
-            return PersonaResource::collection($personas);
+            return PersonaResource::collection($persona);
         } catch (\Exception $e) {
             throw new CustomizeException('Persona no encontrada', Response::HTTP_NOT_FOUND);
         }
@@ -49,6 +49,8 @@ class PersonaController extends Controller
 
     public function index()
     {
+        $persona = $this->personaService->personaTabla();
+        $persona = $persona->load('formacion');
         $persona = $this->personaService->personaTabla();
         return PersonaResource::collection($persona);
     }
@@ -69,7 +71,6 @@ class PersonaController extends Controller
     public function update(PersonaEditRequest $request, $personaId)
     {
         try {
-
             $validated = $request->validated();
             $persona = $this->personaService->personaActualizar($personaId, $validated);
 

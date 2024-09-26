@@ -21,17 +21,17 @@ class DocenteController extends Controller
 
     public function DocenteDatos($id)
     {
-        $Docente = $this->DocenteService->DocenteDatos($id);
-        return new DocenteShowResource($Docente);
+        $docente = $this->DocenteService->DocenteDatos($id);
+        return new DocenteShowResource($docente);
     }
 
     public function buscarDocente(Request $request)
     {
         try {
             $query = $request->input('query');
-            $Docente = $this->DocenteService->buscarDocente($query);
+            $docente = $this->DocenteService->buscarDocente($query);
     
-            return DocenteResource::collection($Docente);
+            return DocenteResource::collection($docente);
         } catch (\Exception $e) {
             throw new CustomizeException('Docente no encontrada');
         }
@@ -39,36 +39,36 @@ class DocenteController extends Controller
 
     public function DocenteAll()
     {
-        $Docente = $this->DocenteService->DocenteAll();
-        return DocenteResource::collection($Docente);
+        $docente = $this->DocenteService->DocenteAll();
+        return DocenteResource::collection($docente);
     }
 
     public function index(Request $request)
     {
         $perPage = $request->query('per_page', 10);
     
-        $Docentes = $this->DocenteService->DocenteLista($perPage);
+        $docente = $this->DocenteService->DocenteLista($perPage);
     
-        return DocenteResource::collection($Docentes);
+        return DocenteResource::collection($docente);
     }
 
     public function show($id)
     {
-        $Docente = Docente::findOrFail($id);
+        $docente = Docente::findOrFail($id);
 
-        return new DocenteShowResource($Docente);
+        return new DocenteShowResource($docente);
     }
 
     public function store(DocenteRequest $request)
     {
-        $Docente = $this->DocenteService->crearDocente($request->validated());
-        return new DocenteShowResource($Docente);
+        $docente = $this->DocenteService->crearDocente($request->validated());
+        return new DocenteShowResource($docente);
     }
 
     public function update(DocenteRequest $request, $id)
     {
-        $Docente = $this->DocenteService->actualizarDocente($id, $request->validated());
-        return new DocenteShowResource($Docente);
+        $docente = $this->DocenteService->actualizarDocente($id, $request->validated());
+        return new DocenteShowResource($docente);
     }
 
     public function destroy($id)

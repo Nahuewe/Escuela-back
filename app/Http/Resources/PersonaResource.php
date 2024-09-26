@@ -14,6 +14,17 @@ class PersonaResource extends JsonResource
             'nombre'=>$this->resource->nombre,
             'apellido'=>$this->resource->apellido,
             'dni'=>$this->resource->dni,
+            // 'fecha_nacimiento'=>$this->resource->fecha_nacimiento,
+            // 'fecha_cursado'=>$this->resource->fecha_cursado,
+            // 'edad'=>$this->resource->edad,
+            'telefono'=>$this->resource->telefono,
+            // 'domicilio'=>$this->resource->domicilio,
+            // 'ocupacion'=>$this->resource->ocupacion,
+            // 'enfermedad'=>$this->resource->enfermedad,
+            // 'becas'=>$this->resource->becas,
+            'formacion_id' => $this->resource->formacion->id ?? null,
+            'formacion' => $this->resource->formacion->formacion ?? null,
+            // 'observacion'=>$this->resource->observacion,
             'estado'=>$this->resource->estados->nombre,
         ];
     }

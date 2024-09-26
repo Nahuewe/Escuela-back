@@ -14,8 +14,14 @@ return new class extends Migration
         Schema::create('docente', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('dni');
+            $table->date('fecha_nacimiento')->nullable();
+            $table->string('domicilio')->nullable();
+            $table->date('fecha_docencia')->nullable();
+            $table->date('fecha_cargo')->nullable();
+            $table->string('situacion')->nullable();
             $table->string('formacion')->nullable();
-            $table->string('telefono_laboral')->nullable();
+            $table->string('telefono')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,7 +17,6 @@ class EstadosSeeder extends Seeder
             ['nombre' => 'ACTIVO'],
             ['nombre' => 'INACTIVO'],
             ['nombre' => 'PENDIENTE'],
-
         ]);
     }
 }

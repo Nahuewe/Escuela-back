@@ -15,8 +15,8 @@ class DocenteService
 
     public function DocenteAll()
     {
-        $Docente=Docente::orderBy('nombre', 'asc')->get();
-        return $Docente;
+        $docente=Docente::orderBy('nombre', 'asc')->get();
+        return $docente;
     }
 
     public function verDocente($id)
@@ -26,8 +26,8 @@ class DocenteService
 
     public function index(Request $request)
     {
-        $Docente = Docente::paginate(10);
-        return response()->json($Docente);
+        $docente = Docente::paginate(10);
+        return response()->json($docente);
     }
 
     public function DocenteDatos($id)
@@ -42,24 +42,23 @@ class DocenteService
 
     public function actualizarDocente($id, $data)
     {
-        $Docente = Docente::findOrFail($id);
-        $Docente->update($data);
-        return $Docente;
+        $docente = Docente::findOrFail($id);
+        $docente->update($data);
+        return $docente;
     }
 
     public function eliminarDocente($id)
     {
-        $Docente = Docente::findOrFail($id);
-        $Docente->delete();
+        $docente = Docente::findOrFail($id);
+        $docente->delete();
     }
 
 public function buscarDocente($query)
 {
-    $Docente = Docente::where('nombre', 'LIKE', "%$query%")
-        ->orWhere('domicilio_trabajo', 'LIKE', "%$query%")
-        ->orWhere('telefono_laboral', 'LIKE', "%$query%")
+    $docente = Docente::where('nombre', 'LIKE', "%$query%")
+        ->orWhere('formacion', 'LIKE', "%$query%")
         ->get();
 
-    return $Docente;
+    return $docente;
 }
 }
