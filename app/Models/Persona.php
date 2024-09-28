@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Persona extends Model
 {
@@ -20,7 +20,6 @@ class Persona extends Model
         'apellido',
         'dni',
         'fecha_nacimiento',
-        'fecha_cursado',
         'edad',
         'sexo_id',
         'telefono',
@@ -28,7 +27,6 @@ class Persona extends Model
         'ocupacion',
         'enfermedad',
         'becas',
-        'formacion_id',
         'observacion',
         'estados_id',
     ];
@@ -45,8 +43,8 @@ class Persona extends Model
         return $this->belongsTo(Sexo::class, 'sexo_id');
     }
 
-    public function formacion()
+    public function formacion(): HasMany
     {
-        return $this->belongsTo(Docente::class, 'formacion_id');
+        return $this->hasMany(Formacion::class, 'persona_id');
     }
 }

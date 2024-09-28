@@ -30,7 +30,6 @@ class PersonaRequest extends FormRequest
             'persona.apellido' => 'required|string',
             'persona.dni' => 'required|string|unique:persona',
             'persona.fecha_nacimiento' => 'nullable|date',
-            'persona.fecha_cursado' => 'nullable|date',
             'persona.edad' => 'nullable|string',
             'persona.sexo_id' => 'nullable|exists:sexo,id',
             'persona.telefono' => 'nullable|string',
@@ -38,8 +37,14 @@ class PersonaRequest extends FormRequest
             'persona.ocupacion' => 'nullable|string',
             'persona.enfermedad' => 'nullable|string',
             'persona.becas' => 'nullable|string',
-            'persona.formacion_id' => 'nullable|integer|exists:docente,id',
-            'persona.observacion' => 'nullable|string'
+            'persona.observacion' => 'nullable|string',
+
+            //FORMACION
+            'formacion' => 'array',
+            'formacion.*.formacion_id' => 'nullable|integer|exists:docente,id',
+            'formacion.*.fecha_cursado' => 'nullable|date',
+            'formacion.*.fecha_finalizacion' => 'nullable|date|after_or_equal:formacion.*.fecha_cursado',
+            'formacion.*.observaciones' => 'nullable|string',
         ];
     }
 

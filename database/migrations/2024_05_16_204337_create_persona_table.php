@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('apellido');
             $table->string('dni')->unique();
             $table->date('fecha_nacimiento')->nullable();
-            $table->date('fecha_cursado')->nullable();
             $table->string('edad')->nullable();
             $table->unsignedBigInteger('sexo_id')->nullable();
             $table->foreign('sexo_id')->references('id')->on('sexo');
@@ -26,8 +25,6 @@ return new class extends Migration
             $table->string('ocupacion')->nullable();
             $table->string('enfermedad')->nullable();
             $table->string('becas')->nullable();
-            $table->unsignedBigInteger('formacion_id');
-            $table->foreign('formacion_id')->references('id')->on('docente');
             $table->string('observacion')->nullable();
             $table->unsignedBigInteger('estados_id')->default(1);
             $table->foreign('estados_id')->references('id')->on('estados');

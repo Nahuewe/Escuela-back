@@ -38,8 +38,14 @@ class PersonaEditRequest extends FormRequest
             'persona.ocupacion' => 'nullable|string',
             'persona.enfermedad' => 'nullable|string',
             'persona.becas' => 'nullable|string',
-            'persona.formacion_id' => 'nullable|integer|exists:docente,id',
-            'persona.observacion' => 'nullable|string'
+            'persona.observacion' => 'nullable|string',
+
+            //FORMACION
+            'formacion' => 'array',
+            'formacion.*.formacion_id' => 'nullable|integer|exists:docente,id',
+            'formacion.*.fecha_cursado' => 'nullable|date',
+            'formacion.*.fecha_finalizacion' => 'nullable|date|after_or_equal:formacion.*.fecha_cursado',
+            'formacion.*.observaciones' => 'nullable|string|max:255',
         ];
     }
 

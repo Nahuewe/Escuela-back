@@ -22,7 +22,6 @@ class PersonaShowResource extends JsonResource
                 'apellido' => $this->apellido,
                 'dni' => $this->dni,
                 'fecha_nacimiento' => $this->fecha_nacimiento ?? null,
-                'fecha_cursado' => $this->fecha_cursado ?? null,
                 'edad' => $this->edad,
                 'sexo_id' => $this->sexo_id ?? null,
                 'sexo' => $this->sexo->nombre ?? null,
@@ -31,12 +30,21 @@ class PersonaShowResource extends JsonResource
                 'ocupacion' => $this->ocupacion,
                 'enfermedad' => $this->enfermedad,
                 'becas' => $this->becas,
-                'formacion_id' => $this->formacion->id ?? null,
-                'formacion' => $this->formacion->formacion ?? null,
                 'observacion' => $this->observacion,
                 'estados_id' => $this->estados_id ?? null,
                 'estados' => $this->estados->nombre ?? null,
             ],
+            'formacion' => $this->when('formacion', function () {
+                return $this->formacion->map(function ($for) {
+                    return [
+                        'id' => $for->id,
+                        'formacion_id' => $for->formacion_id ?? null,
+                        'fecha_cursado' => $for->fecha_cursado ?? null,
+                        'fecha_finalizacion' => $for->fecha_finalizacion ?? null,
+                        'observaciones' => $for->observaciones ?? null,
+                    ];
+                });
+            }),
         ];
     }
 }

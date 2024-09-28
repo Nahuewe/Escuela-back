@@ -5,6 +5,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\SexoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FormacionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 
@@ -18,6 +19,8 @@ Route::post('/cambiar-estado', [PersonaController::class, 'cambiarEstado']);
 Route::apiResource('docente', DocenteController::class);
 Route::get('docenteAll', [DocenteController::class,'docenteAll']);
 Route::get('buscar-docente', [DocenteController::class, 'buscarDocente']);
+// Formacion
+Route::apiResource('formacion', FormacionController::class);
 // Auth
 Route::post('/registrar', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
