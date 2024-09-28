@@ -18,11 +18,10 @@ class PersonaResource extends JsonResource
             // 'edad'=>$this->resource->edad,
             'telefono'=>$this->resource->telefono,
             // 'domicilio'=>$this->resource->domicilio,
-            // 'ocupacion'=>$this->resource->ocupacion,
+            'ocupacion'=>$this->resource->ocupacion,
             // 'enfermedad'=>$this->resource->enfermedad,
             // 'becas'=>$this->resource->becas,
             'formacion_id' => $this->resource->id ?? null,
-            'formacion' => $this->resource->formacion ?? null,
             // 'observacion'=>$this->resource->observacion,
             'estado'=>$this->resource->estados->nombre,
         ];

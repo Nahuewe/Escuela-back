@@ -14,9 +14,9 @@ class SexoSeeder extends Seeder
     public function run(): void
     {
         DB::table('sexo')->insert([
-            ['nombre' => 'Hombre'],
-            ['nombre' => 'Mujer'],
-            ['nombre' => 'No Informa'],
+            ['nombre' => 'HOMBRE'],
+            ['nombre' => 'MUJER'],
+            ['nombre' => 'NO INFORMA'],
         ]);
     }
 }

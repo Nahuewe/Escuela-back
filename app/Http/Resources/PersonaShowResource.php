@@ -39,6 +39,7 @@ class PersonaShowResource extends JsonResource
                     return [
                         'id' => $for->id,
                         'formacion_id' => $for->formacion_id ?? null,
+                        'formacion' => $for->formacion->formacion ?? null,
                         'fecha_cursado' => $for->fecha_cursado ?? null,
                         'fecha_finalizacion' => $for->fecha_finalizacion ?? null,
                         'observaciones' => $for->observaciones ?? null,
