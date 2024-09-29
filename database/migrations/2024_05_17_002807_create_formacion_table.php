@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('formacion', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('formacion_id')->nullable();
-            $table->foreign('formacion_id')->references('id')->on('docente');
+            $table->foreign('formacion_id')->references('id')->on('docente')->nullable();
             $table->date('fecha_cursado')->nullable();
             $table->date('fecha_finalizacion')->nullable();
             $table->string('observaciones')->nullable();
