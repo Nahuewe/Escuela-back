@@ -22,6 +22,7 @@ class PersonaResource extends JsonResource
             // 'enfermedad'=>$this->resource->enfermedad,
             // 'becas'=>$this->resource->becas,
             'formacion_id' => $this->resource->id ?? null,
+            'formacion' => FormacionResource::collection($this->whenLoaded('formacion')),
             // 'observacion'=>$this->resource->observacion,
             'estado'=>$this->resource->estados->nombre,
         ];

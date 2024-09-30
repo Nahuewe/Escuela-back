@@ -16,7 +16,9 @@ class FormacionResource extends JsonResource
     {
         return [
             'id' => $this->resource->id,
-            'nombre' => $this->resource->nombre,
+            'formacion_id' => $this->resource->id ?? null,
+            'formacion' => $this->resource->formacion->formacion ?? null,
+            'persona_id' => $this->resource->persona_id ?? null,
         ];
     }
 }

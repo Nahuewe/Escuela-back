@@ -43,6 +43,7 @@ class PersonaShowResource extends JsonResource
                         'fecha_cursado' => $for->fecha_cursado ?? null,
                         'fecha_finalizacion' => $for->fecha_finalizacion ?? null,
                         'observaciones' => $for->observaciones ?? null,
+                        'persona_id' => $for->persona_id ?? null,
                     ];
                 });
             }),

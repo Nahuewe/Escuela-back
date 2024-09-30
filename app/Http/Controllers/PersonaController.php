@@ -44,16 +44,18 @@ class PersonaController extends Controller
     public function personaAll()
     {
         $persona = $this->personaService->personaAll();
+        $persona->load('formacion');
         return PersonaResource::collection($persona);
     }
 
     public function index()
     {
         $persona = $this->personaService->personaTabla();
-        $persona = $persona->load('formacion');
-        $persona = $this->personaService->personaTabla();
+        $persona->load('formacion');
+        
         return PersonaResource::collection($persona);
     }
+    
 
     public function store(PersonaRequest $request)
     {
