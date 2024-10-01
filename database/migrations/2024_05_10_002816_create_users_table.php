@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('telefono')->nullable();
-            $table->string('correo')->unique();
+            $table->string('correo')->nullable();
             $table->unsignedBigInteger('roles_id');
             $table->foreign('roles_id')->references('id')->on('roles');
             $table->unsignedBigInteger('estados_id');

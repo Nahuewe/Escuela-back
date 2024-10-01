@@ -25,6 +25,7 @@ class DocenteResource extends JsonResource
             'situacion' => $this->situacion,
             'formacion' => $this->formacion,
             'telefono' => $this->telefono,
+            'observacion' => $this->observacion,
         ];
     }
 }

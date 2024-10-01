@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'username' => ['sometimes','nullable','string','max:255', Rule::unique('users')->ignore($id)],
             'password' => ['sometimes','nullable','string','min:6', Rule::unique('users')->ignore($id)],
             'telefono' => 'sometimes|nullable|string',
-            'correo' =>  ['sometimes','nullable','email','string','max:255', Rule::unique('users')->ignore($id)],
+            'correo' =>  'sometimes|nullable|string|max:255',
             'roles_id' => 'sometimes|nullable|exists:roles,id',
             'estados_id' => 'sometimes|nullable',
         ];

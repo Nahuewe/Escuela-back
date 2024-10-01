@@ -24,7 +24,8 @@ class DocenteSeeder extends Seeder
                 "fecha_cargo" => "2024-09-25",
                 "situacion" => 1,
                 "formacion" => "Programación",
-                "telefono" => "3834523702"
+                "telefono" => "3834523702",
+                "observacion" => "Tipazo"
             ]
         ]);
     }

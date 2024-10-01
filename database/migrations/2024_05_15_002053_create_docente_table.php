@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('situacion')->nullable();
             $table->string('formacion')->nullable();
             $table->string('telefono')->nullable();
+            $table->string('observacion')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

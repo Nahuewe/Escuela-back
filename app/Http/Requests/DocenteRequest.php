@@ -23,6 +23,7 @@ class DocenteRequest extends FormRequest
             'situacion' => 'nullable|string',
             'formacion' => 'nullable|string',
             'telefono' => 'nullable|string',
+            'observacion' => 'nullable|string',
         ];
     }
 }
