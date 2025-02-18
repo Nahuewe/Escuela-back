@@ -137,11 +137,12 @@ class PersonaService
 
     public function buscarPersona($query)
     {
-        $personas = Persona::where('dni', 'LIKE', "%$query%")
+        $personas = Persona::with('formacion')
+            ->where('dni', 'LIKE', "%$query%")
             ->orWhere('nombre', 'LIKE', "%$query%")
             ->orWhere('apellido', 'LIKE', "%$query%")
             ->get();
     
         return $personas;
-    }
+    }    
 }
