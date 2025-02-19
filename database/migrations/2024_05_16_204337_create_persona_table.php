@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('dni');
+            $table->string('dni')->unique();
             $table->date('fecha_nacimiento')->nullable();
             $table->string('edad')->nullable();
             $table->unsignedBigInteger('sexo_id')->nullable();

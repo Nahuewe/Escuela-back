@@ -48,4 +48,14 @@ class PersonaEditRequest extends FormRequest
             'formacion.*.observaciones' => 'nullable|string|max:255',
         ];
     }
+
+    /**
+     * Get custom messages for validator errors.
+     */
+    public function messages()
+    {
+        return [
+            'persona.dni.unique' => 'El DNI ya está registrado.',
+        ];
+    }
 }
