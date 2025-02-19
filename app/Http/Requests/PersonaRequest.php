@@ -28,7 +28,7 @@ class PersonaRequest extends FormRequest
             //PERSONA
             'persona.nombre' => 'required|string',
             'persona.apellido' => 'required|string',
-            'persona.dni' => 'required|string|unique:persona',
+            'persona.dni' => 'required|string',
             'persona.fecha_nacimiento' => 'nullable|date',
             'persona.edad' => 'nullable|string',
             'persona.sexo_id' => 'nullable|exists:sexo,id',
@@ -62,9 +62,6 @@ class PersonaRequest extends FormRequest
             'persona.apellido.required' => 'El apellido es obligatorio.',
             'persona.sexo_id.exists' => 'El sexo seleccionado no es válido.',
             'persona.fecha_nacimiento.date' => 'La fecha de nacimiento debe ser una fecha válida.',
-            'persona.dni.required' => 'El DNI es obligatorio.',
-            'persona.dni.integer' => 'El DNI debe ser un número entero.',
-            'persona.dni.unique' => 'El DNI ya está registrado.',
             'persona.telefono.string' => 'El teléfono debe ser un número entero.',
             'persona.estados_id.required' => 'El estado es obligatorio.',
             'persona.estados_id.exists' => 'El estado seleccionado no es válido.',
