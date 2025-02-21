@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 
-class PersonaShowResource extends JsonResource
+class PersonaExcelResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -34,16 +34,14 @@ class PersonaShowResource extends JsonResource
                 'estados_id' => $this->estados_id ?? null,
                 'estados' => $this->estados->nombre ?? null,
             ],
-            'formacion' => $this->when('formacion', function () {
+            'formacion' => $this->when($this->formacion, function () {
                 return $this->formacion->map(function ($for) {
                     return [
                         'id' => $for->id ?? null,
-                        'formacion_id' => $for->formacion_id ?? null,
                         'formacion' => $for->formacion->formacion ?? null,
                         'fecha_cursado' => $for->fecha_cursado ?? null,
                         'fecha_finalizacion' => $for->fecha_finalizacion ?? null,
                         'observaciones' => $for->observaciones ?? null,
-                        'persona_id' => $for->persona_id ?? null,
                     ];
                 });
             }),

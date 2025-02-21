@@ -24,11 +24,7 @@ class PersonaEditRequest extends FormRequest
         return [
             'persona.nombre' => 'required|string',
             'persona.apellido' => 'required|string',
-            'persona.dni' => [
-                'required',
-                'string',
-                Rule::unique('persona')->ignore($id)
-            ],
+            'persona.dni' => 'required|string',
             'persona.fecha_nacimiento' => 'nullable|date',
             'persona.fecha_cursado' => 'nullable|date',
             'persona.edad' => 'nullable|string',
@@ -52,10 +48,10 @@ class PersonaEditRequest extends FormRequest
     /**
      * Get custom messages for validator errors.
      */
-    public function messages()
-    {
-        return [
-            'persona.dni.unique' => 'El DNI ya está registrado.',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'persona.dni.unique' => 'El DNI ya está registrado.',
+    //     ];
+    // }
 }

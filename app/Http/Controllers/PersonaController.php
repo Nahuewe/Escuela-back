@@ -9,6 +9,8 @@ use App\Services\PersonaService;
 use App\Http\Requests\PersonaRequest;
 use App\Http\Requests\PersonaEditRequest;
 use App\Exceptions\CustomizeException;
+use App\Http\Resources\PersonaExcelResource;
+use App\Models\Persona;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -22,11 +24,27 @@ class PersonaController extends Controller
         $this->personaService = $personaService;
     }
 
-    public function ListaPersona()
-    { {
-            $persona = $this->personaService->personaLista();
-            return PersonaShowResource::collection($persona);
+    public function ListaPersona(Request $request)
+    {
+        $pageSize = $request->query('pageSize', 100);
+        $page = $request->query('page', 1);
+    
+        $personaQuery = $this->personaService->personaLista();
+        
+        if ($personaQuery instanceof \Illuminate\Support\Collection) {
+            $personaQuery = Persona::whereIn('id', $personaQuery->pluck('id'));
         }
+    
+        $total = $personaQuery->count();
+        $personas = $personaQuery->skip(($page - 1) * $pageSize)->take($pageSize)->get();
+    
+        return response()->json([
+            'data' => PersonaExcelResource::collection($personas),
+            'total' => $total,
+            'page' => $page,
+            'pageSize' => $pageSize,
+            'hasMore' => ($page * $pageSize) < $total,
+        ]);
     }
 
     public function buscarPersona(Request $request)

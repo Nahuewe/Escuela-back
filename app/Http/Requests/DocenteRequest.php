@@ -15,7 +15,7 @@ class DocenteRequest extends FormRequest
     {
         return [
             'nombre' => 'required|string',
-            'dni' => 'required|string|unique:persona',
+            'dni' => 'required|string',
             'fecha_nacimiento' => 'nullable|date',
             'domicilio' => 'nullable|string',
             'fecha_docencia' => 'nullable|date',

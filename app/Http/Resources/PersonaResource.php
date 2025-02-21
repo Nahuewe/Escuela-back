@@ -9,22 +9,23 @@ class PersonaResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        $resource = $this->resource;
         return [
-            'id' => $this->resource->id,
-            'nombre'=>$this->resource->nombre,
-            'apellido'=>$this->resource->apellido,
-            'dni'=>$this->resource->dni,
+            'id' => $resource['id'] ?? null,
+            'nombre' => ($resource['nombre'] ?? null),
+            'apellido' => ($resource['apellido'] ?? null),
+            'dni' => ($resource['dni'] ?? null),
             // 'fecha_nacimiento'=>$this->resource->fecha_nacimiento,
             // 'edad'=>$this->resource->edad,
-            'telefono'=>$this->resource->telefono,
+            'telefono' => ($resource['telefono'] ?? null),
             // 'domicilio'=>$this->resource->domicilio,
-            'ocupacion'=>$this->resource->ocupacion,
+            'ocupacion' => ($resource['ocupacion'] ?? null),
             // 'enfermedad'=>$this->resource->enfermedad,
             // 'becas'=>$this->resource->becas,
             'formacion_id' => $this->resource->id ?? null,
             'formacion' => FormacionResource::collection($this->whenLoaded('formacion')),
             // 'observacion'=>$this->resource->observacion,
-            'estado'=>$this->resource->estados->nombre,
+            'estado' => is_array($resource) ? ($resource['estado'] ?? null) : $resource->estados->nombre ?? null,
         ];
     }
 }

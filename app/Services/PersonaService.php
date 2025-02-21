@@ -123,7 +123,7 @@ class PersonaService
 
     public function personaLista()
     {
-        $persona = Persona::with('formacion')->get();
+        $persona = Persona::all();
         return $persona;
     }
 
