@@ -18,6 +18,7 @@ class FormacionResource extends JsonResource
             'id' => $this->resource->id,
             'formacion_id' => $this->resource->id ?? null,
             'formacion' => $this->resource->formacion->formacion ?? null,
+            'fecha_cursado' => $this->resource->fecha_cursado ?? null,
             'persona_id' => $this->resource->persona_id ?? null,
         ];
     }

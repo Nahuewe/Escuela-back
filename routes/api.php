@@ -15,16 +15,20 @@ Route::get('personalista', [PersonaController::class,'listapersona']);
 Route::get('personaAll', [PersonaController::class,'personaAll']);
 Route::get('buscar-persona', [PersonaController::class,'buscarPersona']);
 Route::post('/cambiar-estado', [PersonaController::class, 'cambiarEstado']);
+
 // Docentes
 Route::apiResource('docente', DocenteController::class);
 Route::get('docenteAll', [DocenteController::class,'docenteAll']);
 Route::get('buscar-docente', [DocenteController::class, 'buscarDocente']);
+
 // Formacion
 Route::apiResource('formacion', FormacionController::class);
+
 // Auth
 Route::post('/registrar', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/refresh-token', [AuthController::class, 'refreshToken'])->middleware('auth:sanctum');
+
 // Endpoints extra
 Route::apiResource('sexo', SexoController::class);
 Route::apiResource('/user', UserController::class);
